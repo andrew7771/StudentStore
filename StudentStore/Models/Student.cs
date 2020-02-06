@@ -9,7 +9,10 @@ namespace StudentStore.Models
     {
         public string Id { get; set; }
         public string Name { get; set; }
+        public Student()
+        {
 
+        }
         public Student(string name)
         {
             Id = Guid.NewGuid().ToString();

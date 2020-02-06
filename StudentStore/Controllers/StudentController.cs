@@ -22,6 +22,6 @@ namespace StudentStore.Controllers
 
         [HttpGet]
         [Route("GetAllStudents")]
-        public IEnumerable<Student> GetAllStudents() => _studentService.GetAllStudents();
+        public IEnumerable<Student> GetAllStudents() => _studentService.GetAllStudents().ToList();
     }
 }

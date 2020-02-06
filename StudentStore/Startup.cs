@@ -12,13 +12,25 @@ using StudentStore.Repositories.Interfaces;
 using StudentStore.Services.Implementation;
 using StudentStore.Services.Interfaces;
 using Microsoft.OpenApi.Models;
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace StudentStore
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; set; }
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
         public void ConfigureServices(IServiceCollection services)
         {
+            string connection = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -26,8 +38,8 @@ namespace StudentStore
             });
 
 
-            services.AddTransient<IStudentRepository, StudentRepository>();
-            services.AddTransient<IStudentService, StudentService>();
+            services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<IStudentService, StudentService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -38,10 +50,7 @@ namespace StudentStore
             }
 
             app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-            });
+            app.UseSwaggerUI(SwaggerConfigurator);
 
             app.UseRouting();
 
@@ -49,6 +58,11 @@ namespace StudentStore
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private void SwaggerConfigurator(SwaggerUIOptions options)
+        {
+            options.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
         }
     }
 }
