@@ -15,6 +15,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.SwaggerUI;
+using StudentStore.Models;
 
 namespace StudentStore
 {
@@ -28,8 +29,8 @@ namespace StudentStore
 
         public void ConfigureServices(IServiceCollection services)
         {
-            string connection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(connection));
+            string connection = Configuration.GetConnectionString("TotalJournalConnection");
+            services.AddDbContext<TotalJournalContext>(options => options.UseSqlServer(connection));
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

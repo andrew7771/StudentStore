@@ -9,13 +9,13 @@ namespace StudentStore.Repositories.Implementation
 {
     public class StudentRepository : IStudentRepository
     {
-        ApplicationContext _db;
-        public StudentRepository(ApplicationContext db)
+        TotalJournalContext _db;
+        public StudentRepository(TotalJournalContext db)
         {
             _db = db;
         }
-        public IEnumerable<Student> GetAllStudents() => _db.Students;            
+        public IEnumerable<Students> GetAllStudents() => _db.Students;            
 
-        public Student GetStudentById(string id) => _db.Students.FirstOrDefault(student => student.Id == id);
+        public Students GetStudentById(string id) => _db.Students.FirstOrDefault(student => student.RecordBookNumberId == id);
     }
 }

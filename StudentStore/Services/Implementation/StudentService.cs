@@ -17,8 +17,8 @@ namespace StudentStore.Services.Implementation
             _studentRepository = studentRepository;
         }
 
-        public IEnumerable<Student> GetAllStudents() => _studentRepository.GetAllStudents();
+        public IEnumerable<Students> GetAllStudents() => _studentRepository.GetAllStudents();
 
-        public Student GetStudentById(string id) => _studentRepository.GetStudentById(id);
+        public Students GetStudentById(string id) => _studentRepository.GetStudentById(id);
     }
 }
