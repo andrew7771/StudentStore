@@ -14,8 +14,8 @@ namespace StudentStore.Repositories.Implementation
         {
             _db = db;
         }
-        public IEnumerable<Students> GetAllStudents() => _db.Students;            
+        public IEnumerable<Student> GetAllStudents() => _db.Students;            
 
-        public Students GetStudentById(string id) => _db.Students.FirstOrDefault(student => student.RecordBookNumberId == id);
+        public Student GetStudentById(string id) => _db.Students.FirstOrDefault(student => student.Id == id);
     }
 }

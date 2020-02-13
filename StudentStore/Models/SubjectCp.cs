@@ -3,25 +3,25 @@ using System.Collections.Generic;
 
 namespace StudentStore.Models
 {
-    public partial class SubjectCps
+    public partial class SubjectCp
     {
-        public SubjectCps()
+        public SubjectCp()
         {
             CourseProjectLines = new HashSet<CourseProjectLines>();
             CplineMaxPoints = new HashSet<CplineMaxPoints>();
-            SubjectCpgroups = new HashSet<SubjectCpgroups>();
-            SubjectCpstudents = new HashSet<SubjectCpstudents>();
+            SubjectCpgroups = new HashSet<SubjectCpGroup>();
+            SubjectCpstudents = new HashSet<SubjectCpstudent>();
         }
 
-        public int SubjectCpId { get; set; }
+        public int Id { get; set; }
         public int TeacherId { get; set; }
         public string SubjectCpname { get; set; }
         public int Term { get; set; }
 
-        public virtual Teachers Teacher { get; set; }
+        public virtual Teacher Teacher { get; set; }
         public virtual ICollection<CourseProjectLines> CourseProjectLines { get; set; }
         public virtual ICollection<CplineMaxPoints> CplineMaxPoints { get; set; }
-        public virtual ICollection<SubjectCpgroups> SubjectCpgroups { get; set; }
-        public virtual ICollection<SubjectCpstudents> SubjectCpstudents { get; set; }
+        public virtual ICollection<SubjectCpGroup> SubjectCpgroups { get; set; }
+        public virtual ICollection<SubjectCpstudent> SubjectCpstudents { get; set; }
     }
 }

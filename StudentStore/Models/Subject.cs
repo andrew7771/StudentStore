@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace StudentStore.Models
 {
-    public partial class Subjects
+    public partial class Subject
     {
-        public Subjects()
+        public Subject()
         {
             AttendanceDates = new HashSet<AttendanceDates>();
             Attendances = new HashSet<Attendances>();
@@ -21,15 +21,15 @@ namespace StudentStore.Models
             OneItemPoints = new HashSet<OneItemPoints>();
         }
 
-        public int SubjectId { get; set; }
+        public int Id { get; set; }
         public int TeacherId { get; set; }
         public string SubjectName { get; set; }
         public int Term { get; set; }
         public int SubjectType { get; set; }
-        public string StudentRecordBookNumberId { get; set; }
+        public string StudentId { get; set; }
 
-        public virtual Students StudentRecordBookNumber { get; set; }
-        public virtual Teachers Teacher { get; set; }
+        public virtual Student Student { get; set; }
+        public virtual Teacher Teacher { get; set; }
         public virtual ICollection<AttendanceDates> AttendanceDates { get; set; }
         public virtual ICollection<Attendances> Attendances { get; set; }
         public virtual ICollection<FreeMarkFieldMaxPoints> FreeMarkFieldMaxPoints { get; set; }

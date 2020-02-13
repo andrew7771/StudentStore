@@ -13,7 +13,7 @@ namespace StudentStore.Models
         public int TheMark { get; set; }
         public DateTime DateOfPassing { get; set; }
 
-        public virtual Students RecordBookNumber { get; set; }
-        public virtual SubjectCps SubjectCp { get; set; }
+        public virtual Student RecordBookNumber { get; set; }
+        public virtual SubjectCp SubjectCp { get; set; }
     }
 }

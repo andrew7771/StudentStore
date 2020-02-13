@@ -10,6 +10,6 @@ namespace StudentStore.Models
         public int Index { get; set; }
         public int SubjectId { get; set; }
 
-        public virtual Subjects Subject { get; set; }
+        public virtual Subject Subject { get; set; }
     }
 }

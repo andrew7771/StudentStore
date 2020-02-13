@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StudentStore.Models;
 
 namespace StudentStore.Migrations
 {
     [DbContext(typeof(TotalJournalContext))]
-    partial class TotalJournalContextModelSnapshot : ModelSnapshot
+    [Migration("20200213173904_Updates_02")]
+    partial class Updates_02
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -496,10 +498,10 @@ namespace StudentStore.Migrations
                     b.ToTable("OneItemPoints");
                 });
 
-            modelBuilder.Entity("StudentStore.Models.Student", b =>
+            modelBuilder.Entity("StudentStore.Models.Students", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnName("Id")
+                    b.Property<string>("RecordBookNumberId")
+                        .HasColumnName("RecordBookNumberID")
                         .HasColumnType("nvarchar(128)")
                         .HasMaxLength(128);
 
@@ -520,7 +522,7 @@ namespace StudentStore.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id")
+                    b.HasKey("RecordBookNumberId")
                         .HasName("PK_dbo.Students");
 
                     b.HasIndex("GroupId")
@@ -594,24 +596,24 @@ namespace StudentStore.Migrations
                     b.ToTable("SubjectCPs");
                 });
 
-            modelBuilder.Entity("StudentStore.Models.SubjectCpGroup", b =>
+            modelBuilder.Entity("StudentStore.Models.SubjectCpgroups", b =>
                 {
-                    b.Property<int>("SubjectCpId")
+                    b.Property<int>("SubjectCpSubjectCpId")
                         .HasColumnName("SubjectCP_SubjectCP_ID")
                         .HasColumnType("int");
 
-                    b.Property<string>("GroupId")
+                    b.Property<string>("GroupGroupId")
                         .HasColumnName("Group_GroupID")
                         .HasColumnType("nvarchar(6)")
                         .HasMaxLength(6);
 
-                    b.HasKey("SubjectCpId", "GroupId")
+                    b.HasKey("SubjectCpSubjectCpId", "GroupGroupId")
                         .HasName("PK_dbo.SubjectCPGroups");
 
-                    b.HasIndex("GroupId")
+                    b.HasIndex("GroupGroupId")
                         .HasName("IX_Group_GroupID");
 
-                    b.HasIndex("SubjectCpId")
+                    b.HasIndex("SubjectCpSubjectCpId")
                         .HasName("IX_SubjectCP_SubjectCP_ID");
 
                     b.ToTable("SubjectCPGroups");
@@ -681,7 +683,7 @@ namespace StudentStore.Migrations
 
             modelBuilder.Entity("StudentStore.Models.Attendances", b =>
                 {
-                    b.HasOne("StudentStore.Models.Student", "RecordBookNumber")
+                    b.HasOne("StudentStore.Models.Students", "RecordBookNumber")
                         .WithMany("Attendances")
                         .HasForeignKey("RecordBookNumberId")
                         .HasConstraintName("FK_dbo.Attendances_dbo.Students_RecordBookNumberID");
@@ -696,7 +698,7 @@ namespace StudentStore.Migrations
 
             modelBuilder.Entity("StudentStore.Models.CourseProjectLines", b =>
                 {
-                    b.HasOne("StudentStore.Models.Student", "RecordBookNumber")
+                    b.HasOne("StudentStore.Models.Students", "RecordBookNumber")
                         .WithMany("CourseProjectLines")
                         .HasForeignKey("RecordBookNumberId")
                         .HasConstraintName("FK_dbo.CourseProjectLines_dbo.Students_RecordBookNumberID");
@@ -729,7 +731,7 @@ namespace StudentStore.Migrations
 
             modelBuilder.Entity("StudentStore.Models.FreeMarkFields", b =>
                 {
-                    b.HasOne("StudentStore.Models.Student", "RecordBookNumber")
+                    b.HasOne("StudentStore.Models.Students", "RecordBookNumber")
                         .WithMany("FreeMarkFields")
                         .HasForeignKey("RecordBookNumberId")
                         .HasConstraintName("FK_dbo.FreeMarkFields_dbo.Students_RecordBookNumberID");
@@ -761,7 +763,7 @@ namespace StudentStore.Migrations
 
             modelBuilder.Entity("StudentStore.Models.HomeWorks", b =>
                 {
-                    b.HasOne("StudentStore.Models.Student", "RecordBookNumber")
+                    b.HasOne("StudentStore.Models.Students", "RecordBookNumber")
                         .WithMany("HomeWorks")
                         .HasForeignKey("RecordBookNumberId")
                         .HasConstraintName("FK_dbo.HomeWorks_dbo.Students_RecordBookNumberID");
@@ -796,7 +798,7 @@ namespace StudentStore.Migrations
 
             modelBuilder.Entity("StudentStore.Models.Marks", b =>
                 {
-                    b.HasOne("StudentStore.Models.Student", "RecordBookNumber")
+                    b.HasOne("StudentStore.Models.Students", "RecordBookNumber")
                         .WithMany("Marks")
                         .HasForeignKey("RecordBookNumberId")
                         .HasConstraintName("FK_dbo.Marks_dbo.Students_RecordBookNumberID");
@@ -821,7 +823,7 @@ namespace StudentStore.Migrations
 
             modelBuilder.Entity("StudentStore.Models.Modules", b =>
                 {
-                    b.HasOne("StudentStore.Models.Student", "RecordBookNumber")
+                    b.HasOne("StudentStore.Models.Students", "RecordBookNumber")
                         .WithMany("Modules")
                         .HasForeignKey("RecordBookNumberId")
                         .HasConstraintName("FK_dbo.Modules_dbo.Students_RecordBookNumberID");
@@ -844,7 +846,7 @@ namespace StudentStore.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("StudentStore.Models.Student", b =>
+            modelBuilder.Entity("StudentStore.Models.Students", b =>
                 {
                     b.HasOne("StudentStore.Models.Groups", "Group")
                         .WithMany("Students")
@@ -854,7 +856,7 @@ namespace StudentStore.Migrations
 
             modelBuilder.Entity("StudentStore.Models.Subject", b =>
                 {
-                    b.HasOne("StudentStore.Models.Student", "Student")
+                    b.HasOne("StudentStore.Models.Students", "Student")
                         .WithMany("Subjects")
                         .HasForeignKey("StudentId");
 
@@ -875,18 +877,18 @@ namespace StudentStore.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("StudentStore.Models.SubjectCpGroup", b =>
+            modelBuilder.Entity("StudentStore.Models.SubjectCpgroups", b =>
                 {
-                    b.HasOne("StudentStore.Models.Groups", "Group")
+                    b.HasOne("StudentStore.Models.Groups", "GroupGroup")
                         .WithMany("SubjectCpgroups")
-                        .HasForeignKey("GroupId")
+                        .HasForeignKey("GroupGroupId")
                         .HasConstraintName("FK_dbo.SubjectCPGroups_dbo.Groups_Group_GroupID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("StudentStore.Models.SubjectCp", "SubjectCp")
+                    b.HasOne("StudentStore.Models.SubjectCp", "SubjectCpSubjectCp")
                         .WithMany("SubjectCpgroups")
-                        .HasForeignKey("SubjectCpId")
+                        .HasForeignKey("SubjectCpSubjectCpId")
                         .HasConstraintName("FK_dbo.SubjectCPGroups_dbo.SubjectCPs_SubjectCP_SubjectCP_ID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -901,7 +903,7 @@ namespace StudentStore.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("StudentStore.Models.Student", "Student")
+                    b.HasOne("StudentStore.Models.Students", "Student")
                         .WithMany("SubjectCpstudents")
                         .HasForeignKey("StudentId")
                         .HasConstraintName("FK_dbo.SubjectCPStudents_dbo.Students_Student_StudentId")

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace StudentStore.Models
 {
-    public partial class Students
+    public partial class Student
     {
-        public Students()
+        public Student()
         {
             Attendances = new HashSet<Attendances>();
             CourseProjectLines = new HashSet<CourseProjectLines>();
@@ -13,11 +13,11 @@ namespace StudentStore.Models
             HomeWorks = new HashSet<HomeWorks>();
             Marks = new HashSet<Marks>();
             Modules = new HashSet<Modules>();
-            SubjectCpstudents = new HashSet<SubjectCpstudents>();
-            Subjects = new HashSet<Subjects>();
+            SubjectCpstudents = new HashSet<SubjectCpstudent>();
+            Subjects = new HashSet<Subject>();
         }
 
-        public string RecordBookNumberId { get; set; }
+        public string Id { get; set; }
         public string GroupId { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
@@ -30,7 +30,7 @@ namespace StudentStore.Models
         public virtual ICollection<HomeWorks> HomeWorks { get; set; }
         public virtual ICollection<Marks> Marks { get; set; }
         public virtual ICollection<Modules> Modules { get; set; }
-        public virtual ICollection<SubjectCpstudents> SubjectCpstudents { get; set; }
-        public virtual ICollection<Subjects> Subjects { get; set; }
+        public virtual ICollection<SubjectCpstudent> SubjectCpstudents { get; set; }
+        public virtual ICollection<Subject> Subjects { get; set; }
     }
 }

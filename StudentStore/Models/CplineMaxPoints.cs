@@ -12,6 +12,6 @@ namespace StudentStore.Models
         public int MaxPoint { get; set; }
         public int? SubjectCpSubjectCpId { get; set; }
 
-        public virtual SubjectCps SubjectCpSubjectCp { get; set; }
+        public virtual SubjectCp SubjectCpSubjectCp { get; set; }
     }
 }

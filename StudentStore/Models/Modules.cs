@@ -11,7 +11,7 @@ namespace StudentStore.Models
         public int ModulePoint { get; set; }
         public int ModuleNumber { get; set; }
 
-        public virtual Students RecordBookNumber { get; set; }
-        public virtual Subjects Subject { get; set; }
+        public virtual Student RecordBookNumber { get; set; }
+        public virtual Subject Subject { get; set; }
     }
 }

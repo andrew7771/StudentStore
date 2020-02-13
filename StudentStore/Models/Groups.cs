@@ -8,15 +8,15 @@ namespace StudentStore.Models
         public Groups()
         {
             GroupSubjects = new HashSet<GroupSubjects>();
-            Students = new HashSet<Students>();
-            SubjectCpgroups = new HashSet<SubjectCpgroups>();
+            Students = new HashSet<Student>();
+            SubjectCpgroups = new HashSet<SubjectCpGroup>();
         }
 
         public string GroupId { get; set; }
         public int CourseNumber { get; set; }
 
         public virtual ICollection<GroupSubjects> GroupSubjects { get; set; }
-        public virtual ICollection<Students> Students { get; set; }
-        public virtual ICollection<SubjectCpgroups> SubjectCpgroups { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
+        public virtual ICollection<SubjectCpGroup> SubjectCpgroups { get; set; }
     }
 }

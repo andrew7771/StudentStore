@@ -8,7 +8,7 @@ namespace StudentStore.Services.Interfaces
 {
     public interface IStudentService
     {
-        IEnumerable<Students> GetAllStudents();
-        Students GetStudentById(string id);
+        IEnumerable<Student> GetAllStudents();
+        Student GetStudentById(string id);
     }
 }

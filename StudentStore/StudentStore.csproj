@@ -5,6 +5,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200213170147_Updates_01.cs" />
+    <Compile Remove="Migrations\20200213170147_Updates_01.Designer.cs" />
+    <Compile Remove="Migrations\20200213170411_Updates_01.cs" />
+    <Compile Remove="Migrations\20200213170411_Updates_01.Designer.cs" />
+    <Compile Remove="Migrations\20200213172611_Updates_02.cs" />
+    <Compile Remove="Migrations\20200213172611_Updates_02.Designer.cs" />
+    <Compile Remove="Migrations\20200213172829_Updates_03.cs" />
+    <Compile Remove="Migrations\20200213172829_Updates_03.Designer.cs" />
+    <Compile Remove="Migrations\20200213173054_Updates_02.cs" />
+    <Compile Remove="Migrations\20200213173054_Updates_02.Designer.cs" />
+    <Compile Remove="Migrations\20200213173521_Updates_02.cs" />
+    <Compile Remove="Migrations\20200213173521_Updates_02.Designer.cs" />
+    <Compile Remove="Migrations\20200213173657_Updates_02.cs" />
+    <Compile Remove="Migrations\20200213173657_Updates_02.Designer.cs" />
+    <Compile Remove="Migrations\20200213174147_Updates_03.cs" />
+    <Compile Remove="Migrations\20200213174147_Updates_03.Designer.cs" />
+    <Compile Remove="Migrations\20200213174425_Updates_03.cs" />
+    <Compile Remove="Migrations\20200213174425_Updates_03.Designer.cs" />
+    <Compile Remove="Migrations\20200213174651_Updates_03.cs" />
+    <Compile Remove="Migrations\20200213174651_Updates_03.Designer.cs" />
+    <Compile Remove="Migrations\20200213174853_Updates_03.cs" />
+    <Compile Remove="Migrations\20200213174853_Updates_03.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.1">
       <PrivateAssets>all</PrivateAssets>

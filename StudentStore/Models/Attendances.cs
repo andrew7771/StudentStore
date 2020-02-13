@@ -12,7 +12,7 @@ namespace StudentStore.Models
         public bool IsVisited { get; set; }
         public int Index { get; set; }
 
-        public virtual Students RecordBookNumber { get; set; }
-        public virtual Subjects Subject { get; set; }
+        public virtual Student RecordBookNumber { get; set; }
+        public virtual Subject Subject { get; set; }
     }
 }

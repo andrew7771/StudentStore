@@ -10,6 +10,6 @@ namespace StudentStore.Models
         public int Hwnumber { get; set; }
         public int MaxPoint { get; set; }
 
-        public virtual Subjects Subject { get; set; }
+        public virtual Subject Subject { get; set; }
     }
 }

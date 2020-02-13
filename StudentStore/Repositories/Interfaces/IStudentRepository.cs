@@ -8,7 +8,7 @@ namespace StudentStore.Repositories.Interfaces
 {
     public interface IStudentRepository
     {
-        IEnumerable<Students> GetAllStudents();
-        Students GetStudentById(string id);
+        IEnumerable<Student> GetAllStudents();
+        Student GetStudentById(string id);
     }
 }

@@ -9,6 +9,6 @@ namespace StudentStore.Models
         public int SubjectSubjectId { get; set; }
 
         public virtual Groups GroupGroup { get; set; }
-        public virtual Subjects SubjectSubject { get; set; }
+        public virtual Subject SubjectSubject { get; set; }
     }
 }
