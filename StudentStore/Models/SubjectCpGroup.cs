@@ -8,7 +8,7 @@ namespace StudentStore.Models
         public int SubjectCpId { get; set; }
         public string GroupId { get; set; }
 
-        public virtual Groups Group { get; set; }
+        public virtual Group Group { get; set; }
         public virtual SubjectCp SubjectCp { get; set; }
     }
 }

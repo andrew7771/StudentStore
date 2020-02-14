@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 namespace StudentStore.Models
 {
-    public partial class CplineMaxPoints
+    public partial class CplineMaxPoint
     {
-        public int CplineMaxPointId { get; set; }
+        public int Id { get; set; }
         public int SubjectCpid { get; set; }
         public string LineName { get; set; }
         public int LineIndex { get; set; }
         public int MaxPoint { get; set; }
-        public int? SubjectCpSubjectCpId { get; set; }
+        public int? SubjectCpId { get; set; }
 
-        public virtual SubjectCp SubjectCpSubjectCp { get; set; }
+        public virtual SubjectCp SubjectCp { get; set; }
     }
 }

@@ -7,8 +7,8 @@ namespace StudentStore.Models
     {
         public SubjectCp()
         {
-            CourseProjectLines = new HashSet<CourseProjectLines>();
-            CplineMaxPoints = new HashSet<CplineMaxPoints>();
+            CourseProjectLines = new HashSet<CourseProjectLine>();
+            CplineMaxPoints = new HashSet<CplineMaxPoint>();
             SubjectCpgroups = new HashSet<SubjectCpGroup>();
             SubjectCpstudents = new HashSet<SubjectCpstudent>();
         }
@@ -19,8 +19,8 @@ namespace StudentStore.Models
         public int Term { get; set; }
 
         public virtual Teacher Teacher { get; set; }
-        public virtual ICollection<CourseProjectLines> CourseProjectLines { get; set; }
-        public virtual ICollection<CplineMaxPoints> CplineMaxPoints { get; set; }
+        public virtual ICollection<CourseProjectLine> CourseProjectLines { get; set; }
+        public virtual ICollection<CplineMaxPoint> CplineMaxPoints { get; set; }
         public virtual ICollection<SubjectCpGroup> SubjectCpgroups { get; set; }
         public virtual ICollection<SubjectCpstudent> SubjectCpstudents { get; set; }
     }

@@ -16,21 +16,21 @@ namespace StudentStore.Models
             Database.EnsureCreated();
         }
 
-        public virtual DbSet<AttendanceDates> AttendanceDates { get; set; }
-        public virtual DbSet<Attendances> Attendances { get; set; }
-        public virtual DbSet<CourseProjectLines> CourseProjectLines { get; set; }
-        public virtual DbSet<CplineMaxPoints> CplineMaxPoints { get; set; }
-        public virtual DbSet<FreeMarkFieldMaxPoints> FreeMarkFieldMaxPoints { get; set; }
-        public virtual DbSet<FreeMarkFields> FreeMarkFields { get; set; }
+        public virtual DbSet<AttendanceDate> AttendanceDates { get; set; }
+        public virtual DbSet<Attendance> Attendances { get; set; }
+        public virtual DbSet<CourseProjectLine> CourseProjectLines { get; set; }
+        public virtual DbSet<CplineMaxPoint> CplineMaxPoints { get; set; }
+        public virtual DbSet<FreeMarkFieldMaxPoint> FreeMarkFieldMaxPoints { get; set; }
+        public virtual DbSet<FreeMarkField> FreeMarkFields { get; set; }
         public virtual DbSet<GroupSubjects> GroupSubjects { get; set; }
-        public virtual DbSet<Groups> Groups { get; set; }
+        public virtual DbSet<Group> Groups { get; set; }
         public virtual DbSet<HomeWorks> HomeWorks { get; set; }
-        public virtual DbSet<HwmaxPoints> HwmaxPoints { get; set; }
-        public virtual DbSet<LabMaxPoints> LabMaxPoints { get; set; }
-        public virtual DbSet<Marks> Marks { get; set; }
-        public virtual DbSet<ModuleMaxPoints> ModuleMaxPoints { get; set; }
-        public virtual DbSet<Modules> Modules { get; set; }
-        public virtual DbSet<OneItemPoints> OneItemPoints { get; set; }
+        public virtual DbSet<HwmaxPoint> HwmaxPoints { get; set; }
+        public virtual DbSet<LabMaxPoint> LabMaxPoints { get; set; }
+        public virtual DbSet<Mark> Marks { get; set; }
+        public virtual DbSet<ModuleMaxPoint> ModuleMaxPoints { get; set; }
+        public virtual DbSet<Module> Modules { get; set; }
+        public virtual DbSet<OneItemPoint> OneItemPoints { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<SubjectCpGroup> SubjectCpgroups { get; set; }
         public virtual DbSet<SubjectCp> SubjectCps { get; set; }
@@ -41,9 +41,9 @@ namespace StudentStore.Models
        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AttendanceDates>(entity =>
+            modelBuilder.Entity<AttendanceDate>(entity =>
             {
-                entity.HasKey(e => e.AttendanceDateId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_dbo.AttendanceDates");
 
                 entity.HasIndex(e => e.SubjectId)
@@ -57,30 +57,30 @@ namespace StudentStore.Models
                     .HasConstraintName("FK_dbo.AttendanceDates_dbo.Subjects_SubjectId");
             });
 
-            modelBuilder.Entity<Attendances>(entity =>
+            modelBuilder.Entity<Attendance>(entity =>
             {
-                entity.HasKey(e => e.AttendanceId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_dbo.Attendances");
 
-                entity.HasIndex(e => e.RecordBookNumberId)
+                entity.HasIndex(e => e.StudentId)
                     .HasName("IX_RecordBookNumberID");
 
                 entity.HasIndex(e => e.SubjectId)
                     .HasName("IX_SubjectID");
 
-                entity.Property(e => e.AttendanceId).HasColumnName("AttendanceID");
+                entity.Property(e => e.Id).HasColumnName("AttendanceID");
 
                 entity.Property(e => e.ClassDate).HasColumnType("datetime");
 
-                entity.Property(e => e.RecordBookNumberId)
+                entity.Property(e => e.StudentId)
                     .HasColumnName("RecordBookNumberID")
                     .HasMaxLength(128);
 
                 entity.Property(e => e.SubjectId).HasColumnName("SubjectID");
 
-                entity.HasOne(d => d.RecordBookNumber)
+                entity.HasOne(d => d.Student)
                     .WithMany(p => p.Attendances)
-                    .HasForeignKey(d => d.RecordBookNumberId)
+                    .HasForeignKey(d => d.StudentId)
                     .HasConstraintName("FK_dbo.Attendances_dbo.Students_RecordBookNumberID");
 
                 entity.HasOne(d => d.Subject)
@@ -89,30 +89,30 @@ namespace StudentStore.Models
                     .HasConstraintName("FK_dbo.Attendances_dbo.Subjects_SubjectID");
             });
 
-            modelBuilder.Entity<CourseProjectLines>(entity =>
+            modelBuilder.Entity<CourseProjectLine>(entity =>
             {
-                entity.HasKey(e => e.CourseProjectLineId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_dbo.CourseProjectLines");
 
-                entity.HasIndex(e => e.RecordBookNumberId)
+                entity.HasIndex(e => e.StudentId)
                     .HasName("IX_RecordBookNumberID");
 
                 entity.HasIndex(e => e.SubjectCpId)
                     .HasName("IX_SubjectCP_ID");
 
-                entity.Property(e => e.CourseProjectLineId).HasColumnName("CourseProjectLineID");
+                entity.Property(e => e.Id).HasColumnName("CourseProjectLineID");
 
                 entity.Property(e => e.DateOfPassing).HasColumnType("datetime");
 
-                entity.Property(e => e.RecordBookNumberId)
+                entity.Property(e => e.StudentId)
                     .HasColumnName("RecordBookNumberID")
                     .HasMaxLength(128);
 
                 entity.Property(e => e.SubjectCpId).HasColumnName("SubjectCP_ID");
 
-                entity.HasOne(d => d.RecordBookNumber)
+                entity.HasOne(d => d.Student)
                     .WithMany(p => p.CourseProjectLines)
-                    .HasForeignKey(d => d.RecordBookNumberId)
+                    .HasForeignKey(d => d.StudentId)
                     .HasConstraintName("FK_dbo.CourseProjectLines_dbo.Students_RecordBookNumberID");
 
                 entity.HasOne(d => d.SubjectCp)
@@ -121,37 +121,37 @@ namespace StudentStore.Models
                     .HasConstraintName("FK_dbo.CourseProjectLines_dbo.SubjectCPs_SubjectCP_ID");
             });
 
-            modelBuilder.Entity<CplineMaxPoints>(entity =>
+            modelBuilder.Entity<CplineMaxPoint>(entity =>
             {
-                entity.HasKey(e => e.CplineMaxPointId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_dbo.CPLineMaxPoints");
 
                 entity.ToTable("CPLineMaxPoints");
 
-                entity.HasIndex(e => e.SubjectCpSubjectCpId)
+                entity.HasIndex(e => e.SubjectCpId)
                     .HasName("IX_SubjectCP_SubjectCP_ID");
 
-                entity.Property(e => e.CplineMaxPointId).HasColumnName("CPLineMaxPointID");
+                entity.Property(e => e.Id).HasColumnName("CPLineMaxPointID");
 
-                entity.Property(e => e.SubjectCpSubjectCpId).HasColumnName("SubjectCP_SubjectCP_ID");
+                entity.Property(e => e.SubjectCpId).HasColumnName("SubjectCP_SubjectCP_ID");
 
                 entity.Property(e => e.SubjectCpid).HasColumnName("SubjectCPID");
 
-                entity.HasOne(d => d.SubjectCpSubjectCp)
+                entity.HasOne(d => d.SubjectCp)
                     .WithMany(p => p.CplineMaxPoints)
-                    .HasForeignKey(d => d.SubjectCpSubjectCpId)
+                    .HasForeignKey(d => d.SubjectCpId)
                     .HasConstraintName("FK_dbo.CPLineMaxPoints_dbo.SubjectCPs_SubjectCP_SubjectCP_ID");
             });
 
-            modelBuilder.Entity<FreeMarkFieldMaxPoints>(entity =>
+            modelBuilder.Entity<FreeMarkFieldMaxPoint>(entity =>
             {
-                entity.HasKey(e => e.FreeMarkFieldMaxPointId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_dbo.FreeMarkFieldMaxPoints");
 
                 entity.HasIndex(e => e.SubjectId)
                     .HasName("IX_SubjectID");
 
-                entity.Property(e => e.FreeMarkFieldMaxPointId).HasColumnName("FreeMarkFieldMaxPointID");
+                entity.Property(e => e.Id).HasColumnName("FreeMarkFieldMaxPointID");
 
                 entity.Property(e => e.SubjectId).HasColumnName("SubjectID");
 
@@ -161,26 +161,26 @@ namespace StudentStore.Models
                     .HasConstraintName("FK_dbo.FreeMarkFieldMaxPoints_dbo.Subjects_SubjectID");
             });
 
-            modelBuilder.Entity<FreeMarkFields>(entity =>
+            modelBuilder.Entity<FreeMarkField>(entity =>
             {
-                entity.HasKey(e => e.FreeMarkFieldId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_dbo.FreeMarkFields");
 
-                entity.HasIndex(e => new { e.FieldNumber, e.RecordBookNumberId, e.SubjectId })
+                entity.HasIndex(e => new { e.FieldNumber, e.StudentId, e.SubjectId })
                     .HasName("IX_FieldsNumberRecordBookNumberIDSubjectID")
                     .IsUnique();
 
-                entity.Property(e => e.FreeMarkFieldId).HasColumnName("FreeMarkFieldID");
+                entity.Property(e => e.Id).HasColumnName("FreeMarkFieldID");
 
-                entity.Property(e => e.RecordBookNumberId)
+                entity.Property(e => e.StudentId)
                     .HasColumnName("RecordBookNumberID")
                     .HasMaxLength(128);
 
                 entity.Property(e => e.SubjectId).HasColumnName("SubjectID");
 
-                entity.HasOne(d => d.RecordBookNumber)
+                entity.HasOne(d => d.Student)
                     .WithMany(p => p.FreeMarkFields)
-                    .HasForeignKey(d => d.RecordBookNumberId)
+                    .HasForeignKey(d => d.StudentId)
                     .HasConstraintName("FK_dbo.FreeMarkFields_dbo.Students_RecordBookNumberID");
 
                 entity.HasOne(d => d.Subject)
@@ -191,52 +191,52 @@ namespace StudentStore.Models
 
             modelBuilder.Entity<GroupSubjects>(entity =>
             {
-                entity.HasKey(e => new { e.GroupGroupId, e.SubjectSubjectId })
+                entity.HasKey(e => new { e.GroupId, e.SubjectId })
                     .HasName("PK_dbo.GroupSubjects");
 
-                entity.HasIndex(e => e.GroupGroupId)
+                entity.HasIndex(e => e.GroupId)
                     .HasName("IX_Group_GroupID");
 
-                entity.HasIndex(e => e.SubjectSubjectId)
+                entity.HasIndex(e => e.SubjectId)
                     .HasName("IX_Subject_SubjectID");
 
-                entity.Property(e => e.GroupGroupId)
+                entity.Property(e => e.GroupId)
                     .HasColumnName("Group_GroupID")
                     .HasMaxLength(6);
 
-                entity.Property(e => e.SubjectSubjectId).HasColumnName("Subject_SubjectID");
+                entity.Property(e => e.SubjectId).HasColumnName("Subject_SubjectID");
 
-                entity.HasOne(d => d.GroupGroup)
+                entity.HasOne(d => d.Group)
                     .WithMany(p => p.GroupSubjects)
-                    .HasForeignKey(d => d.GroupGroupId)
+                    .HasForeignKey(d => d.GroupId)
                     .HasConstraintName("FK_dbo.GroupSubjects_dbo.Groups_Group_GroupID");
 
-                entity.HasOne(d => d.SubjectSubject)
+                entity.HasOne(d => d.Subject)
                     .WithMany(p => p.GroupSubjects)
-                    .HasForeignKey(d => d.SubjectSubjectId)
+                    .HasForeignKey(d => d.SubjectId)
                     .HasConstraintName("FK_dbo.GroupSubjects_dbo.Subjects_Subject_SubjectID");
             });
 
-            modelBuilder.Entity<Groups>(entity =>
+            modelBuilder.Entity<Group>(entity =>
             {
-                entity.HasKey(e => e.GroupId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_dbo.Groups");
 
-                entity.Property(e => e.GroupId)
+                entity.Property(e => e.Id)
                     .HasColumnName("GroupID")
                     .HasMaxLength(6);
             });
 
             modelBuilder.Entity<HomeWorks>(entity =>
             {
-                entity.HasKey(e => e.HomeWorkId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_dbo.HomeWorks");
 
-                entity.HasIndex(e => new { e.RecordBookNumberId, e.SubjectId, e.Hwpoint, e.Hwnumber })
+                entity.HasIndex(e => new { e.StudentId, e.SubjectId, e.Hwpoint, e.Hwnumber })
                     .HasName("IX_RecordBookNumberIDSubjectIDHomeWorkIDHWNumber")
                     .IsUnique();
 
-                entity.Property(e => e.HomeWorkId).HasColumnName("HomeWorkID");
+                entity.Property(e => e.Id).HasColumnName("HomeWorkID");
 
                 entity.Property(e => e.DateOfProgram).HasColumnType("datetime");
 
@@ -246,15 +246,15 @@ namespace StudentStore.Models
 
                 entity.Property(e => e.Hwpoint).HasColumnName("HWPoint");
 
-                entity.Property(e => e.RecordBookNumberId)
+                entity.Property(e => e.StudentId)
                     .HasColumnName("RecordBookNumberID")
                     .HasMaxLength(128);
 
                 entity.Property(e => e.SubjectId).HasColumnName("SubjectID");
 
-                entity.HasOne(d => d.RecordBookNumber)
+                entity.HasOne(d => d.Student)
                     .WithMany(p => p.HomeWorks)
-                    .HasForeignKey(d => d.RecordBookNumberId)
+                    .HasForeignKey(d => d.StudentId)
                     .HasConstraintName("FK_dbo.HomeWorks_dbo.Students_RecordBookNumberID");
 
                 entity.HasOne(d => d.Subject)
@@ -263,9 +263,9 @@ namespace StudentStore.Models
                     .HasConstraintName("FK_dbo.HomeWorks_dbo.Subjects_SubjectID");
             });
 
-            modelBuilder.Entity<HwmaxPoints>(entity =>
+            modelBuilder.Entity<HwmaxPoint>(entity =>
             {
-                entity.HasKey(e => e.HwmaxPointId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_dbo.HWMaxPoints");
 
                 entity.ToTable("HWMaxPoints");
@@ -273,7 +273,7 @@ namespace StudentStore.Models
                 entity.HasIndex(e => e.SubjectId)
                     .HasName("IX_SubjectID");
 
-                entity.Property(e => e.HwmaxPointId).HasColumnName("HWMaxPointID");
+                entity.Property(e => e.Id).HasColumnName("HWMaxPointID");
 
                 entity.Property(e => e.Hwnumber).HasColumnName("HWNumber");
 
@@ -285,15 +285,15 @@ namespace StudentStore.Models
                     .HasConstraintName("FK_dbo.HWMaxPoints_dbo.Subjects_SubjectID");
             });
 
-            modelBuilder.Entity<LabMaxPoints>(entity =>
+            modelBuilder.Entity<LabMaxPoint>(entity =>
             {
-                entity.HasKey(e => e.LabMaxPointId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_dbo.LabMaxPoints");
 
                 entity.HasIndex(e => e.SubjectId)
                     .HasName("IX_SubjectID");
 
-                entity.Property(e => e.LabMaxPointId).HasColumnName("LabMaxPointID");
+                entity.Property(e => e.Id).HasColumnName("LabMaxPointID");
 
                 entity.Property(e => e.SubjectId).HasColumnName("SubjectID");
 
@@ -303,30 +303,30 @@ namespace StudentStore.Models
                     .HasConstraintName("FK_dbo.LabMaxPoints_dbo.Subjects_SubjectID");
             });
 
-            modelBuilder.Entity<Marks>(entity =>
+            modelBuilder.Entity<Mark>(entity =>
             {
-                entity.HasKey(e => e.MarkId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_dbo.Marks");
 
-                entity.HasIndex(e => new { e.LabNumber, e.RecordBookNumberId, e.SubjectId })
+                entity.HasIndex(e => new { e.LabNumber, e.StudentId, e.SubjectId })
                     .HasName("IX_LabNumberRecordBookNumberIDSubjectID")
                     .IsUnique();
 
-                entity.Property(e => e.MarkId).HasColumnName("MarkID");
+                entity.Property(e => e.Id).HasColumnName("MarkID");
 
                 entity.Property(e => e.DateOfProgram).HasColumnType("datetime");
 
                 entity.Property(e => e.DateOfReport).HasColumnType("datetime");
 
-                entity.Property(e => e.RecordBookNumberId)
+                entity.Property(e => e.StudentId)
                     .HasColumnName("RecordBookNumberID")
                     .HasMaxLength(128);
 
                 entity.Property(e => e.SubjectId).HasColumnName("SubjectID");
 
-                entity.HasOne(d => d.RecordBookNumber)
+                entity.HasOne(d => d.Student)
                     .WithMany(p => p.Marks)
-                    .HasForeignKey(d => d.RecordBookNumberId)
+                    .HasForeignKey(d => d.StudentId)
                     .HasConstraintName("FK_dbo.Marks_dbo.Students_RecordBookNumberID");
 
                 entity.HasOne(d => d.Subject)
@@ -335,15 +335,15 @@ namespace StudentStore.Models
                     .HasConstraintName("FK_dbo.Marks_dbo.Subjects_SubjectID");
             });
 
-            modelBuilder.Entity<ModuleMaxPoints>(entity =>
+            modelBuilder.Entity<ModuleMaxPoint>(entity =>
             {
-                entity.HasKey(e => e.ModuleMaxPointId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_dbo.ModuleMaxPoints");
 
                 entity.HasIndex(e => e.SubjectId)
                     .HasName("IX_SubjectID");
 
-                entity.Property(e => e.ModuleMaxPointId).HasColumnName("ModuleMaxPointID");
+                entity.Property(e => e.Id).HasColumnName("ModuleMaxPointID");
 
                 entity.Property(e => e.SubjectId).HasColumnName("SubjectID");
 
@@ -353,26 +353,26 @@ namespace StudentStore.Models
                     .HasConstraintName("FK_dbo.ModuleMaxPoints_dbo.Subjects_SubjectID");
             });
 
-            modelBuilder.Entity<Modules>(entity =>
+            modelBuilder.Entity<Module>(entity =>
             {
-                entity.HasKey(e => e.ModuleId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_dbo.Modules");
 
-                entity.HasIndex(e => new { e.RecordBookNumberId, e.SubjectId, e.ModulePoint, e.ModuleNumber })
+                entity.HasIndex(e => new { e.StudentId, e.SubjectId, e.ModulePoint, e.ModuleNumber })
                     .HasName("IX_RecordBookNumberIDModuleIDModuleModulePoint")
                     .IsUnique();
 
-                entity.Property(e => e.ModuleId).HasColumnName("ModuleID");
+                entity.Property(e => e.Id).HasColumnName("ModuleID");
 
-                entity.Property(e => e.RecordBookNumberId)
+                entity.Property(e => e.StudentId)
                     .HasColumnName("RecordBookNumberID")
                     .HasMaxLength(128);
 
                 entity.Property(e => e.SubjectId).HasColumnName("SubjectID");
 
-                entity.HasOne(d => d.RecordBookNumber)
+                entity.HasOne(d => d.Student)
                     .WithMany(p => p.Modules)
-                    .HasForeignKey(d => d.RecordBookNumberId)
+                    .HasForeignKey(d => d.StudentId)
                     .HasConstraintName("FK_dbo.Modules_dbo.Students_RecordBookNumberID");
 
                 entity.HasOne(d => d.Subject)
@@ -381,15 +381,15 @@ namespace StudentStore.Models
                     .HasConstraintName("FK_dbo.Modules_dbo.Subjects_SubjectID");
             });
 
-            modelBuilder.Entity<OneItemPoints>(entity =>
+            modelBuilder.Entity<OneItemPoint>(entity =>
             {
-                entity.HasKey(e => e.OneItemPointId)
+                entity.HasKey(e => e.Id)
                     .HasName("PK_dbo.OneItemPoints");
 
                 entity.HasIndex(e => e.SubjectId)
                     .HasName("IX_SubjectId");
 
-                entity.Property(e => e.OneItemPointId).HasColumnName("OneItemPointID");
+                entity.Property(e => e.Id).HasColumnName("OneItemPointID");
 
                 entity.HasOne(d => d.Subject)
                     .WithMany(p => p.OneItemPoints)

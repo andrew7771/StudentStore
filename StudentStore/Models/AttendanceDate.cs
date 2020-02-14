@@ -3,12 +3,13 @@ using System.Collections.Generic;
 
 namespace StudentStore.Models
 {
-    public partial class GroupSubjects
+    public partial class AttendanceDate
     {
-        public string GroupId { get; set; }
+        public int Id { get; set; }
+        public DateTime Date { get; set; }
+        public int Index { get; set; }
         public int SubjectId { get; set; }
 
-        public virtual Group Group { get; set; }
         public virtual Subject Subject { get; set; }
     }
 }

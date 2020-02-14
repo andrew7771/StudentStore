@@ -7,18 +7,18 @@ namespace StudentStore.Models
     {
         public Subject()
         {
-            AttendanceDates = new HashSet<AttendanceDates>();
-            Attendances = new HashSet<Attendances>();
-            FreeMarkFieldMaxPoints = new HashSet<FreeMarkFieldMaxPoints>();
-            FreeMarkFields = new HashSet<FreeMarkFields>();
+            AttendanceDates = new HashSet<AttendanceDate>();
+            Attendances = new HashSet<Attendance>();
+            FreeMarkFieldMaxPoints = new HashSet<FreeMarkFieldMaxPoint>();
+            FreeMarkFields = new HashSet<FreeMarkField>();
             GroupSubjects = new HashSet<GroupSubjects>();
             HomeWorks = new HashSet<HomeWorks>();
-            HwmaxPoints = new HashSet<HwmaxPoints>();
-            LabMaxPoints = new HashSet<LabMaxPoints>();
-            Marks = new HashSet<Marks>();
-            ModuleMaxPoints = new HashSet<ModuleMaxPoints>();
-            Modules = new HashSet<Modules>();
-            OneItemPoints = new HashSet<OneItemPoints>();
+            HwmaxPoints = new HashSet<HwmaxPoint>();
+            LabMaxPoints = new HashSet<LabMaxPoint>();
+            Marks = new HashSet<Mark>();
+            ModuleMaxPoints = new HashSet<ModuleMaxPoint>();
+            Modules = new HashSet<Module>();
+            OneItemPoints = new HashSet<OneItemPoint>();
         }
 
         public int Id { get; set; }
@@ -30,17 +30,17 @@ namespace StudentStore.Models
 
         public virtual Student Student { get; set; }
         public virtual Teacher Teacher { get; set; }
-        public virtual ICollection<AttendanceDates> AttendanceDates { get; set; }
-        public virtual ICollection<Attendances> Attendances { get; set; }
-        public virtual ICollection<FreeMarkFieldMaxPoints> FreeMarkFieldMaxPoints { get; set; }
-        public virtual ICollection<FreeMarkFields> FreeMarkFields { get; set; }
+        public virtual ICollection<AttendanceDate> AttendanceDates { get; set; }
+        public virtual ICollection<Attendance> Attendances { get; set; }
+        public virtual ICollection<FreeMarkFieldMaxPoint> FreeMarkFieldMaxPoints { get; set; }
+        public virtual ICollection<FreeMarkField> FreeMarkFields { get; set; }
         public virtual ICollection<GroupSubjects> GroupSubjects { get; set; }
         public virtual ICollection<HomeWorks> HomeWorks { get; set; }
-        public virtual ICollection<HwmaxPoints> HwmaxPoints { get; set; }
-        public virtual ICollection<LabMaxPoints> LabMaxPoints { get; set; }
-        public virtual ICollection<Marks> Marks { get; set; }
-        public virtual ICollection<ModuleMaxPoints> ModuleMaxPoints { get; set; }
-        public virtual ICollection<Modules> Modules { get; set; }
-        public virtual ICollection<OneItemPoints> OneItemPoints { get; set; }
+        public virtual ICollection<HwmaxPoint> HwmaxPoints { get; set; }
+        public virtual ICollection<LabMaxPoint> LabMaxPoints { get; set; }
+        public virtual ICollection<Mark> Marks { get; set; }
+        public virtual ICollection<ModuleMaxPoint> ModuleMaxPoints { get; set; }
+        public virtual ICollection<Module> Modules { get; set; }
+        public virtual ICollection<OneItemPoint> OneItemPoints { get; set; }
     }
 }

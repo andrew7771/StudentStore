@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace StudentStore.Models
 {
-    public partial class AttendanceDates
+    public partial class HwmaxPoint
     {
-        public int AttendanceDateId { get; set; }
-        public DateTime Date { get; set; }
-        public int Index { get; set; }
+        public int Id { get; set; }
         public int SubjectId { get; set; }
+        public int Hwnumber { get; set; }
+        public int MaxPoint { get; set; }
 
         public virtual Subject Subject { get; set; }
     }
