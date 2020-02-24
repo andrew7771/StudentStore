@@ -9,13 +9,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StudentStore.Repositories.Implementation;
 using StudentStore.Repositories.Interfaces;
-using StudentStore.Services.Implementation;
-using StudentStore.Services.Interfaces;
+using StudentStore.BLL.Services.Implementation;
+using StudentStore.BLL.Services.Interfaces;
 using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.SwaggerUI;
-using StudentStore.Models;
+using StudentStore.DAL.Models;
 
 namespace StudentStore
 {

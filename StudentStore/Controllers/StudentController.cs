@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using StudentStore.Models;
-using StudentStore.Services.Interfaces;
+using StudentStore.DAL.Models;
+using StudentStore.BLL.Services.Interfaces;
 
 namespace StudentStore.Controllers
 {
