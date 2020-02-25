@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentStore.BLL", "Student
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentStore.Infrastructure", "StudentStore.Infrastructure\StudentStore.Infrastructure.csproj", "{73014B8B-BB5C-43B1-B74B-C3CDC2ABEFC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentStore.DAL", "StudentsStore.DAL(new)\StudentStore.DAL.csproj", "{0262EE21-8F24-45CC-92C1-DC062C7237EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentStore.DAL", "StudentsStore.DAL(new)\StudentStore.DAL.csproj", "{0262EE21-8F24-45CC-92C1-DC062C7237EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

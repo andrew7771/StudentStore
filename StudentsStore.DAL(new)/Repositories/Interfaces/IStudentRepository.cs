@@ -1,4 +1,4 @@
-﻿using StudentStore.DAL.Models;
+﻿using StudentStore.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

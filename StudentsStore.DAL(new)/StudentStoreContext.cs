@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.Extensions.Configuration;
-using StudentStore.DAL.Models;
+using StudentStore.DAL.Entities;
 
 namespace StudentStore.DAL
 {
-    public class StudentStoreContext : DbContext
+    public class StudentStoreContext : IdentityDbContext<User>
     {
         private readonly IConfiguration _config;
         
@@ -29,6 +30,7 @@ namespace StudentStore.DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Student>(entity =>
             {
                 entity.HasData(

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StudentStore.DAL;
-using StudentStore.DAL.Models;
+using StudentStore.DAL.Entities;
 using StudentStore.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace StudentStore.Repositories.Implementation
         }
         public IEnumerable<Student> GetAllStudents()
         {
-            var res = _db.Students;
+            var res = _db.Students.Include(s => s.Group);
             return res;
         }
 

@@ -1,4 +1,5 @@
-﻿using StudentStore.DAL.Models;
+﻿using StudentStore.BLL.ViewModels;
+using StudentStore.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace StudentStore.BLL.Services.Interfaces
 {
     public interface IStudentService
     {
-        IEnumerable<Student> GetAllStudents();
-        Student GetStudentById(string id);
+        IEnumerable<StudentViewModel> GetAllStudents();
+        StudentViewModel GetStudentById(string id);
     }
 }
