@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using StudentStore.DAL;
 using StudentStore.DAL.Models;
 using StudentStore.Repositories.Interfaces;
 using System;
@@ -10,14 +11,14 @@ namespace StudentStore.Repositories.Implementation
 {
     public class StudentRepository : IStudentRepository
     {
-        TotalJournalContext _db;
-        public StudentRepository(TotalJournalContext db)
+        StudentStoreContext _db;
+        public StudentRepository(StudentStoreContext db)
         {
             _db = db;
         }
         public IEnumerable<Student> GetAllStudents()
         {
-            var res = _db.Students.Include(s => s.Marks);
+            var res = _db.Students;
             return res;
         }
 

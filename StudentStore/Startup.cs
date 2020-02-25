@@ -15,7 +15,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.SwaggerUI;
-using StudentStore.DAL.Models;
+using StudentStore.DAL;
 
 namespace StudentStore
 {
@@ -29,8 +29,8 @@ namespace StudentStore
 
         public void ConfigureServices(IServiceCollection services)
         {
-            string connection = Configuration.GetConnectionString("TotalJournalConnection");
-            services.AddDbContext<TotalJournalContext>(options => options.UseSqlServer(connection));
+            //var migrationAssembly = typeof(StudentStoreContext).GetTypeInfo().Assembly.GetName().Name;
+            services.AddDbContext<StudentStoreContext>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StudentStore.DAL\StudentStore.DAL.csproj" />
+    <ProjectReference Include="..\StudentsStore.DAL(new)\StudentStore.DAL.csproj" />
   </ItemGroup>
 
 </Project>
