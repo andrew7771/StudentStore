@@ -25,7 +25,7 @@ namespace StudentStore.DAL
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(_config.GetConnectionString("TotalJournalConnectionNew"));
+            optionsBuilder.UseSqlServer(_config.GetConnectionString("TotalJournalConnection"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
