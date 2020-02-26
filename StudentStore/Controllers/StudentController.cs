@@ -4,8 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using StudentStore.Models;
-using StudentStore.Services.Interfaces;
+using StudentStore.DAL.Entities;
+using StudentStore.BLL.Services.Interfaces;
+using StudentStore.BLL.Models;
 
 namespace StudentStore.Controllers
 {
@@ -22,6 +23,6 @@ namespace StudentStore.Controllers
 
         [HttpGet]
         [Route("GetAllStudents")]
-        public IEnumerable<Student> GetAllStudents() => _studentService.GetAllStudents().ToList();
+        public IEnumerable<StudentModel> GetAllStudents() => _studentService.GetAllStudents().ToList();
     }
 }
