@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using StudentStore.BLL.Models;
 using StudentStore.DAL.Entities;
 using System;
@@ -16,6 +17,7 @@ namespace StudentStore.BLL.Mappings
             CreateMap<Student, StudentModel>().ReverseMap();
             CreateMap<Group, GroupModel>().ReverseMap();
             CreateMap<User, RegisterModel>().ReverseMap();
+            CreateMap<IdentityError, ErrorModel>();
         }
     }
 }

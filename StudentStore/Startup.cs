@@ -29,7 +29,6 @@ namespace StudentStore
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //var migrationAssembly = typeof(StudentStoreContext).GetTypeInfo().Assembly.GetName().Name;
             services.AddProjectMappings();
             services.AddProjectDatadaseConfiguration();
             services.AddProjectRepositories();

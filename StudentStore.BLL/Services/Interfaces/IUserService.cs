@@ -9,7 +9,7 @@ namespace StudentStore.BLL.Services.Interfaces
 {
     public interface IUserService
     {
-        Task<bool> RegisterUserAsync(RegisterModel model);
+        Task<OperationResult> RegisterUserAsync(RegisterModel model);
         Task<string> LoginJwtAsync(LoginModel model);
     }
 }
