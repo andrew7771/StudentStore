@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StudentStore.BLL.ViewModels
+namespace StudentStore.BLL.Models
 {
-    public class UserViewModel
+    public class UserModel
     {
         
     }

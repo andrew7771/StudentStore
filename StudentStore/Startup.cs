@@ -20,7 +20,12 @@ using StudentStore.BLL.Mappings;
 namespace StudentStore
 {
     public class Startup
-    {        
+    {
+        public  IConfiguration Configuration { get; set; }
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -28,11 +33,13 @@ namespace StudentStore
             services.AddProjectMappings();
             services.AddProjectDatadaseConfiguration();
             services.AddProjectRepositories();
+            services.AddProjecJwt(Configuration);
 
             services.AddControllers()
                 .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddSwaggerGen(SwaggerGen);
 
+            services.AddScoped<IUserService, UserService>();
             services.AddScoped<IStudentService, StudentService>();
         }
 
@@ -47,7 +54,8 @@ namespace StudentStore
             app.UseSwaggerUI(SwaggerConfigurator);
 
             app.UseRouting();
-
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

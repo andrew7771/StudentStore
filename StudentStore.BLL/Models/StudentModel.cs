@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StudentStore.BLL.ViewModels
+namespace StudentStore.BLL.Models
 {
-    public class StudentViewModel
+    public class StudentModel
+
     {
         public string FirstName { get; set; }
         public string MiddleName { get; set; }

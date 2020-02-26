@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StudentStore.DAL.Entities;
 using StudentStore.BLL.Services.Interfaces;
-using StudentStore.BLL.ViewModels;
+using StudentStore.BLL.Models;
 
 namespace StudentStore.Controllers
 {
@@ -23,6 +23,6 @@ namespace StudentStore.Controllers
 
         [HttpGet]
         [Route("GetAllStudents")]
-        public IEnumerable<StudentViewModel> GetAllStudents() => _studentService.GetAllStudents().ToList();
+        public IEnumerable<StudentModel> GetAllStudents() => _studentService.GetAllStudents().ToList();
     }
 }

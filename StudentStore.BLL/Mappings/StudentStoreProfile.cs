@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using StudentStore.BLL.ViewModels;
+using StudentStore.BLL.Models;
 using StudentStore.DAL.Entities;
 using System;
 using System.Collections.Generic;
@@ -13,8 +13,9 @@ namespace StudentStore.BLL.Mappings
     {
         public StudentStoreProfile()
         {
-            CreateMap<Student, StudentViewModel>().ReverseMap();
-            CreateMap<Group, GroupViewModel>().ReverseMap();
+            CreateMap<Student, StudentModel>().ReverseMap();
+            CreateMap<Group, GroupModel>().ReverseMap();
+            CreateMap<User, RegisterModel>().ReverseMap();
         }
     }
 }

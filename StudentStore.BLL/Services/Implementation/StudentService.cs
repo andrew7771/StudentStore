@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using StudentStore.BLL.ViewModels;
+using StudentStore.BLL.Models;
 using AutoMapper;
 
 namespace StudentStore.BLL.Services.Implementation
@@ -21,16 +21,16 @@ namespace StudentStore.BLL.Services.Implementation
             _mapper = mapper;
         }
 
-        public IEnumerable<StudentViewModel> GetAllStudents()
+        public IEnumerable<StudentModel> GetAllStudents()
         {
             var result = _studentRepository.GetAllStudents();
-            return _mapper.Map<IEnumerable<StudentViewModel>>(result);
+            return _mapper.Map<IEnumerable<StudentModel>>(result);
         }
 
-        public StudentViewModel GetStudentById(string id)
+        public StudentModel GetStudentById(string id)
         {
             var result = _studentRepository.GetStudentById(id);
-            return _mapper.Map<StudentViewModel>(result);
+            return _mapper.Map<StudentModel>(result);
         }
     }
 }

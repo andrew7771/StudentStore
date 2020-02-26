@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.Extensions.Configuration;
 using StudentStore.DAL.Entities;
 
@@ -33,8 +32,7 @@ namespace StudentStore.DAL
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Student>(entity =>
             {
-                entity.HasData(
-                    new List<Student>
+                entity.HasData(new List<Student>
                 {
                     new Student() { Id = "436001", FirstName = "Катерина", LastName = "Андрющенко", MiddleName = "Сергеевна", GroupId = "641п", },
                     new Student() { Id = "436002", FirstName = "Денис", LastName = "Билецкий", MiddleName = "Романович", GroupId = "641п" },

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StudentStore.BLL.ViewModels
+namespace StudentStore.BLL.Models
 {
-    public class GroupViewModel
+    public class GroupModel
     {
         public string Id { get; set; }
         public int CourseNumber { get; set; }
