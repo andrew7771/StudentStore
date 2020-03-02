@@ -8,6 +8,7 @@ namespace StudentStore.DAL.Entities
 {
     public class Subject
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
+        public string SubjectName { get; set; }
     }
 }

@@ -7,10 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200302154339_AddedSubjects.cs" />
-    <Compile Remove="Migrations\20200302154339_AddedSubjects.Designer.cs" />
-    <Compile Remove="Migrations\20200302155556_AddedSubjects.cs" />
-    <Compile Remove="Migrations\20200302155556_AddedSubjects.Designer.cs" />
+    <Compile Remove="Migrations\20200302171915_SubGroup.cs" />
+    <Compile Remove="Migrations\20200302171915_SubGroup.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

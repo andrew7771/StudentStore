@@ -41,6 +41,9 @@ namespace StudentStore.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<SubjectGroup>().HasKey(k => new { k.SubjectId, k.GroupId });
+
             modelBuilder.Entity<Student>(entity =>
             {
                 entity.HasData(new List<Student>
