@@ -270,3 +270,4 @@ __pycache__/
 Thumbs.db
 tempkey.rsa
 /Web/ClientApp/package-lock.json
+/StudentsStore.DAL(new)/Migrations

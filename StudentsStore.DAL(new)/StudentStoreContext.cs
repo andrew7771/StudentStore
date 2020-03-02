@@ -10,7 +10,11 @@ namespace StudentStore.DAL
     public class StudentStoreContext : IdentityDbContext<User>
     {
         private readonly IConfiguration _config;
-        
+
+        public StudentStoreContext()
+        {
+
+        }
 
         public StudentStoreContext(DbContextOptions<StudentStoreContext> options, IConfiguration config)
             : base(options)
@@ -22,10 +26,17 @@ namespace StudentStore.DAL
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Group> Groups { get; set; }
 
+        public virtual DbSet<Subject> Subjects { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(_config.GetConnectionString("TotalJournalConnection"));
+#if MIGRATION
+            optionsBuilder.UseSqlServer("data source=DESKTOP-OP1RP66\\SQLEXPRESS;initial catalog=StudentsStore;integrated security=True;MultipleActiveResultSets=True;");
+#else
+            optionsBuilder.UseSqlServer(_config.GetConnectionString("TotalJournalConnection"), opt => opt.MigrationsAssembly("StudentStore.DAL"));
+#endif
         }
+         
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
