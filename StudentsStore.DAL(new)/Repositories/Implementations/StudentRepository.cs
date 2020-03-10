@@ -18,7 +18,7 @@ namespace StudentStore.Repositories.Implementation
         }
         public IEnumerable<Student> GetAllStudents()
         {
-            var res = _db.Students.Include(s => s.Group);
+            var res = _db.Students;
             return res;
         }
 

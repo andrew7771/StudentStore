@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using StudentStore.BLL.Models;
@@ -17,18 +18,17 @@ namespace StudentStore.BLL.Services.Implementation
     public class UserService : IUserService
     {
         private readonly UserManager<User> _userManager;
-        private readonly IUserClaimsPrincipalFactory<User> _claimsPrincipalFactory;
         private readonly IConfiguration _configuration;
+        private readonly IMapper _mapper;
 
         public UserService(UserManager<User> userManager,
-             IUserClaimsPrincipalFactory<User> claimsPrincipalFactory,
-             IConfiguration configuration)
+             IConfiguration configuration, IMapper mapper)
         {
             _userManager = userManager;
-            _claimsPrincipalFactory = claimsPrincipalFactory;
             _configuration = configuration;
+            _mapper = mapper;
         }
-        public async Task<bool> RegisterUserAsync(RegisterModel model)
+        public async Task<OperationResult> RegisterUserAsync(RegisterModel model)
         {
             var user = await _userManager.FindByEmailAsync(model.Email);
 
@@ -43,11 +43,18 @@ namespace StudentStore.BLL.Services.Implementation
 
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
-                    return true;
-
+                {
+                    string token = GenerateJwtToken(user);
+                    return new OperationResult
+                    {
+                        Succeeded = result.Succeeded,
+                        Result = token
+                    };
+                }
+                return new OperationResult { Errors = _mapper.Map<List<ErrorModel>>(result.Errors) };
             }
 
-            return false;
+            return new OperationResult().AddError("UserExists", "User with this email already exists");
         }
 
         public async Task<string> LoginJwtAsync(LoginModel model)
@@ -56,7 +63,7 @@ namespace StudentStore.BLL.Services.Implementation
 
             if (await _userManager.CheckPasswordAsync(user, model.Password))
             {
-                var token = GenerateJwtToken(model.Email, user);
+                var token = GenerateJwtToken(user);
 
                 return token;
 
@@ -64,11 +71,11 @@ namespace StudentStore.BLL.Services.Implementation
             return "";
         }
 
-        private string GenerateJwtToken(string email, User user)
+        private string GenerateJwtToken(User user)
         {
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Sub, email),
+                new Claim(JwtRegisteredClaimNames.Sub, user.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(ClaimTypes.NameIdentifier, user.Id)
             };

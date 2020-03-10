@@ -3,7 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>StudentStore.DAL</RootNamespace>
+    <Configurations>Debug;Release;Migration</Configurations>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200302171915_SubGroup.cs" />
+    <Compile Remove="Migrations\20200302171915_SubGroup.Designer.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />

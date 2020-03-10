@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using StudentStore.DAL.Entities;
 using StudentStore.BLL.Services.Interfaces;
 using StudentStore.BLL.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace StudentStore.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize]
     public class StudentController : ControllerBase
     {
         private readonly IStudentService _studentService;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using StudentStore.BLL.Models;
 using StudentStore.BLL.Services.Interfaces;
 
@@ -15,19 +16,24 @@ namespace StudentStore.Controllers
     {
         private readonly IUserService _userService;
 
-        public AccountController(IUserService userService)
+        public AccountController(IUserService userService, LinkGenerator linkGenerator)
         {
             _userService = userService;
         }
 
         [HttpPost]
         [Route("Register")]
-        public async Task<ActionResult<RegisterModel>> Post(RegisterModel model)
+        public async Task<IActionResult> Post(RegisterModel model)
         {
             try
             {
-                bool success = await _userService.RegisterUserAsync(model);
-                return Created("", new RegisterModel());
+                var result = await _userService.RegisterUserAsync(model);
+                if (result.Succeeded)
+                {
+                    return Ok(result.Result);
+                }
+                else
+                    return StatusCode(StatusCodes.Status500InternalServerError, result.Errors);
             }
             catch (Exception ex)
             {
