@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace StudentStore.DAL.Entities
 {
@@ -8,11 +7,13 @@ namespace StudentStore.DAL.Entities
         public Group()
         {
             Students = new HashSet<Student>();
+            SubjectGroups = new HashSet<SubjectGroup>();
         }
 
         public string Id { get; set; }
         public int CourseNumber { get; set; }
 
         public virtual ICollection<Student> Students { get; set; }
+        public virtual ICollection<SubjectGroup> SubjectGroups { get; set; }
     }
 }
