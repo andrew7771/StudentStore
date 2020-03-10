@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using StudentStore.DAL.Entities;
+using StudentStore.Data.Entities;
 using StudentStore.BLL.Services.Interfaces;
 using StudentStore.BLL.Models;
 using Microsoft.AspNetCore.Authorization;

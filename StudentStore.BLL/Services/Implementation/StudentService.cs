@@ -1,4 +1,4 @@
-﻿using StudentStore.DAL.Entities;
+﻿using StudentStore.Data.Entities;
 using StudentStore.Repositories.Interfaces;
 using StudentStore.BLL.Services.Interfaces;
 using System;

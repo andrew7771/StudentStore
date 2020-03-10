@@ -10,7 +10,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.Extensions.Configuration;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using StudentStore.DAL;
-using StudentStore.DAL.Entities;
+using StudentStore.Data.Entities;
 using Microsoft.AspNetCore.Identity;
 using StudentStore.Infrastructure;
 using Swashbuckle.AspNetCore.SwaggerGen;

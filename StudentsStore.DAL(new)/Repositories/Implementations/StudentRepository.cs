@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StudentStore.DAL;
-using StudentStore.DAL.Entities;
+using StudentStore.Data.Entities;
 using StudentStore.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;

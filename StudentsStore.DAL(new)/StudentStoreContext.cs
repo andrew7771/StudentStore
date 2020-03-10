@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using StudentStore.DAL.Entities;
+using StudentStore.Data.Entities;
 
 namespace StudentStore.DAL
 {

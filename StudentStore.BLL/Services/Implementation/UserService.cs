@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using StudentStore.BLL.Models;
 using StudentStore.BLL.Services.Interfaces;
-using StudentStore.DAL.Entities;
+using StudentStore.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;

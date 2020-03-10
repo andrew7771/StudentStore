@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StudentStore.DAL.Entities
+namespace StudentStore.Data.Entities
 {
     public class SubjectGroup
     {

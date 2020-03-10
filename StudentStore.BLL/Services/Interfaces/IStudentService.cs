@@ -1,5 +1,5 @@
 ﻿using StudentStore.BLL.Models;
-using StudentStore.DAL.Entities;
+using StudentStore.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

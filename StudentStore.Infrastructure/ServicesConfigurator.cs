@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using StudentStore.DAL;
-using StudentStore.DAL.Entities;
+using StudentStore.Data.Entities;
 using StudentStore.Repositories.Implementation;
 using StudentStore.Repositories.Interfaces;
 using System;

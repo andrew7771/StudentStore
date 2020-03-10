@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace StudentStore.DAL.Entities
+namespace StudentStore.Data.Entities
 {
     public class Group
     {
