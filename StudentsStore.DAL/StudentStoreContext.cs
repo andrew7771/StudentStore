@@ -91,6 +91,49 @@ namespace StudentStore.DAL
                         new Group{ Id = "631пст", CourseNumber = 4 }
                     });
             });
+
+            modelBuilder.Entity<Subject>(entity =>
+            {
+                //entity.HasData(
+                //    new List<Subject>()
+                //    {
+                //        new Subject() { Id = 1, SubjectName = "Основы программирования", SubjectType = SubjectType.Exam, Term = 1, TeacherID=8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 2, SubjectName = "Основы программной инженерии", SubjectType = SubjectType.Exam, Term = 1, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 3, SubjectName = "Компьтерная дискретная математика", SubjectType = SubjectType.Exam, Term = 2, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 4, SubjectName = "Основы программирования", SubjectType = SubjectType.Exam, Term = 2, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 5, SubjectName = "Групповая динамика и коммуникации", SubjectType = SubjectType.Credit, Term = 2, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 6, SubjectName = "Дискретные структуры", SubjectType = SubjectType.Exam, Term = 3, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 7, SubjectName = "Человеко-машинное взаимодействие", SubjectType = SubjectType.Exam, Term = 3, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 8, SubjectName = "Объектно-ориентированное программирование", SubjectType = SubjectType.Exam, Term = 3, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 9, SubjectName = "Теория вероятности и математическая статистика", SubjectType = SubjectType.Exam, Term = 3, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 10, SubjectName = "Профессиональная практика программной инженерии", SubjectType = SubjectType.Credit, Term = 3, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 11, SubjectName = "Алгоритмы и структуры данных", SubjectType = SubjectType.Exam, Term = 4, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 12, SubjectName = "Архитектура ЭОМ", SubjectType = SubjectType.Exam, Term = 4, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() {}  },
+                //        new Subject() { Id = 13, SubjectName = "Эмперические методы программной инженерии", SubjectType = SubjectType.Exam, Term = 4, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 14, SubjectName = "Конструирование программного обеспечения", SubjectType = SubjectType.Exam, Term = 4, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 15, SubjectName = "Организация компьтерных сетей", SubjectType = SubjectType.Exam, Term = 4, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 16, SubjectName = "Объектно-ориентированное программирование", SubjectType = SubjectType.Credit, Term = 4, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 17, SubjectName = "Инженерная и компьютерная графика", SubjectType = SubjectType.Exam, Term = 5, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 18, SubjectName = "Анализ требований к программному обеспечению", SubjectType = SubjectType.Exam, Term = 5, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 19, SubjectName = "Операционные системы", SubjectType = SubjectType.Exam, Term = 5, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 20, SubjectName = "Качество ПО и тестирование", SubjectType = SubjectType.Exam, Term = 5, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 21, SubjectName = "Английский язык", SubjectType = SubjectType.Credit, Term = 5, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 22, SubjectName = "Архитектура и проектирование ПО", SubjectType = SubjectType.Exam, Term = 6, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 23, SubjectName = "Базы данных", SubjectType = SubjectType.Exam, Term = 6, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 24, SubjectName = "Методы оптимизации и исследования операций", SubjectType = SubjectType.Exam, Term = 6, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 25, SubjectName = "Программирование интернет", SubjectType = SubjectType.Exam, Term = 6, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 26, SubjectName = "Системы искусственного интелекта", SubjectType = SubjectType.Exam, Term = 6, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 27, SubjectName = "Android", SubjectType = SubjectType.Credit, Term = 6, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 28, SubjectName = "Информационные технологии разработки ПО", SubjectType = SubjectType.Exam, Term = 7, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 29, SubjectName = "Безопасность программ и данных", SubjectType = SubjectType.Exam, Term = 7, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>()},
+                //        new Subject() { Id = 30, SubjectName = "Проектирование распределенных систем ЭОМ", SubjectType = SubjectType.Exam, Term = 7, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 31, SubjectName = "Проектный практикум", SubjectType = SubjectType.Credit, Term = 7, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 32, SubjectName = "Менеджмент проектов ПО", SubjectType = SubjectType.Exam, Term = 8, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 33, SubjectName = "Проектирование производственных экспертных систем", SubjectType = SubjectType.Exam, Term = 8, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 34, SubjectName = "Международные стандарты программной инженерии", SubjectType = SubjectType.Exam, Term = 8, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>() },
+                //        new Subject() { Id = 35, SubjectName = "Проектный практикум", SubjectType = SubjectType.Credit, Term = 8, TeacherID = 8, /*Students = new List<Student>()*/ Groups = new List<Group>()}
+                //    });
+            });
         }
            
         //partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

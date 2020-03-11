@@ -16,7 +16,6 @@ namespace StudentStore.Data.Entities
         public string LastName { get; set; }
 
         public string GroupId { get; set; }
-        public virtual Group Group { get; set; }
-       
+        public virtual Group Group { get; set; }       
     }
 }
